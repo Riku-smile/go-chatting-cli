@@ -4,7 +4,7 @@
 // - protoc             v3.19.1
 // source: api/chat.proto
 
-package __
+package api
 
 import (
 	context "context"

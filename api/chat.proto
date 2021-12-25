@@ -1,10 +1,10 @@
 syntax = "proto3";
 
 package api;
-option go_package="./";
+option go_package="./api";
 
 service Chat {
-    rpc Chat (stream ChatMessage) returns (stream ChatMessage){}
+    rpc Chat (stream ChatMessage) returns (stream ChatMessage){};
 }
 
 message ChatMessage {
