@@ -15,13 +15,15 @@ func init() {
 }
 
 func main() {
+	// バリデーション
 	ok := pkg.ArgsValidate()
 	if !ok {
 		return
 	}
 
+	// context作成
 	ctx := context.Background()
-
+	// grpx接続ダイアル設定
 	conn, err := grpc.Dial(os.Args[1], grpc.WithInsecure())
 
 	if err != nil {
@@ -35,6 +37,8 @@ func main() {
 		panic(err)
 	}
 
+	// メッセージ受付処理
 	go pkg.StreamRecv(stream)
+	// コネクション確立
 	pkg.ConnectEstablish(stream)
 }
