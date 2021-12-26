@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"time"
 )
 
 var waitc = make(chan struct{})
@@ -23,6 +24,7 @@ func ArgsValidate() bool {
 // メッセージを受信・表示
 func StreamRecv(stream api.Chat_ChatClient) {
 	for {
+		timeNow := time.Now().Format("2006-01-02 15:04")
 		msg, err := stream.Recv()
 		if err == io.EOF {
 			close(waitc)
@@ -30,7 +32,7 @@ func StreamRecv(stream api.Chat_ChatClient) {
 		} else if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(msg.User + ": " + msg.Message)
+		fmt.Println(timeNow + ": " + msg.User + ": " + msg.Message)
 	}
 }
 
