@@ -21,3 +21,11 @@ go run cmd/server/serer.go
 ```powershell
 go run cmd/client/client.go <URL> <USER>
 ```
+
+## 参照記事
+
+https://selfnote.work/20200720/programming/chat-with-golang/
+
+## 追加機能
+
+- チャットした時刻を表示する機能を追加しました。
